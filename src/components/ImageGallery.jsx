@@ -1,12 +1,12 @@
 import ImageCard from "./ImageCard";
 
-export default function ImageGallery({ items }) {
+export default function ImageGallery({ items, onImageClick }) {
   return (
     <ul>
-      {items.map(({ id, alt_description, urls }) => (
-        <li key={id}>
+      {items.map((image) => (
+        <li key={image.id}>
           <div>
-            <ImageCard urls={urls} alt={alt_description} />
+            <ImageCard img={image} onImageClick={onImageClick} />
           </div>
         </li>
       ))}

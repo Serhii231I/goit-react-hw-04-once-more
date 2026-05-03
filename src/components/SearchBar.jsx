@@ -1,10 +1,12 @@
+import toast, { Toaster } from "react-hot-toast";
+
 export default function SearchBar({ onSearch }) {
   const handleSubmit = (evt) => {
     evt.preventDefault();
     const form = evt.target;
     const topic = form.elements.topic.value;
     if (topic.toLowerCase() === "") {
-      alert("Please make a query!");
+      toast("Please make a query!");
       return;
     }
     onSearch(topic);
@@ -13,9 +15,18 @@ export default function SearchBar({ onSearch }) {
   };
 
   return (
-    <form action="" onSubmit={handleSubmit}>
-      <input type="text" name="topic" />
-      <button type="submit">Search</button>
-    </form>
+    <header>
+      <form onSubmit={handleSubmit}>
+        <input
+          name="topic"
+          type="text"
+          autoComplete="off"
+          autoFocus
+          placeholder="Search images and photos"
+        />
+        <button type="submit">Search</button>
+      </form>
+      <Toaster position="top-center" reverseOrder={false} />
+    </header>
   );
 }

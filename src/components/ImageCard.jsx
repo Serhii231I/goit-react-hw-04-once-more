@@ -1,9 +1,11 @@
-export default function ImageCard({ urls, alt_description }) {
+export default function ImageCard({ img, onImageClick }) {
   return (
     <>
-      <a href="" alt={alt_description}>
-        <img src={urls.regular} />
-      </a>
+      <img
+        src={img.urls.small}
+        alt={img.alt_description}
+        onClick={() => onImageClick(img)}
+      />
     </>
   );
 }
